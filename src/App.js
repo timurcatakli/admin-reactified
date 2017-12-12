@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { Provider } from 'react-redux'
+import store from './store'
 import { Route, Switch } from 'react-router-dom'
 import Home from './pages/Home'
 import AboutUs from './pages/AboutUs'
@@ -9,21 +11,17 @@ import './App.css'
 class App extends Component {
   render() {
     return (
-      <div className="app">
-        <Switch>
-          <Route path="/" exact>
-            <Home />
-          </Route>
-          <Route
-            path={'/aboutus'}
-            component={AboutUs}
-          />
-          <Route
-            path={'/dashboard'}
-            component={DashboardMain}
-          />
-        </Switch>
-      </div>
+      <Provider store={store}>
+        <div className="app">
+          <Switch>
+            <Route path="/" exact>
+              <Home />
+            </Route>
+            <Route path={'/aboutus'} component={AboutUs} />
+            <Route path={'/dashboard'} component={DashboardMain} />
+          </Switch>
+        </div>
+      </Provider>
     )
   }
 }
