@@ -1,29 +1,20 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Provider } from 'react-redux'
-import store from './store'
-import { Route, Switch } from 'react-router-dom'
-import Home from './pages/Home'
-import AboutUs from './pages/AboutUs'
-import DashboardMain from './pages/secured/DashboardMain'
-
+import { store, history } from './store'
+import Routes from './routes'
 import './App.css'
 
-class App extends Component {
+const propTypes = {}
+
+class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <div className="app">
-          <Switch>
-            <Route path="/" exact>
-              <Home />
-            </Route>
-            <Route path={'/aboutus'} component={AboutUs} />
-            <Route path={'/dashboard'} component={DashboardMain} />
-          </Switch>
-        </div>
+        <Routes history={history} />
       </Provider>
     )
   }
 }
 
+App.propTypes = propTypes
 export default App

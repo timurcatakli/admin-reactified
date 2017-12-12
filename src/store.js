@@ -1,11 +1,10 @@
-import { createStore } from 'redux'
+import { createStore, combineReducers } from 'redux'
 import { devToolsEnhancer } from 'redux-devtools-extension'
-import reducer from './reducers'
+import createHistory from 'history/createBrowserHistory'
+import { routerReducer } from 'react-router-redux'
+import reducers from './redux/reducers'
 
+const history = createHistory()
 const store = createStore(
-  reducer,
-  /* preloadedState, */ devToolsEnhancer()
-  // Specify name here, actionsBlacklist, actionsCreators and other options if needed
-)
-
-export default store
+  combineReducers({...reducers, router: routerReducer}), devToolsEnhancer())
+export { store, history }
