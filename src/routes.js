@@ -10,7 +10,6 @@ const propTypes = {
   history: PropTypes.object.isRequired
 }
 
-
 const Routes = (props) => {
   const {history} = props
   return (

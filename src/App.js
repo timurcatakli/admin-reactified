@@ -1,3 +1,5 @@
+//     const { url } = this.props.match;
+
 import React from 'react'
 import { Provider } from 'react-redux'
 import { store, history } from './store'

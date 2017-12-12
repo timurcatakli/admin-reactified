@@ -16,6 +16,8 @@ class Home extends Component {
         Home class component is working -
         <Link to={'/aboutus'}>AboutUs</Link>
         -
+        <Link to={'/dashboard'}>dashboard</Link>
+        -
         {this.props.searchTerm} -
         <button onClick={() => this.props.handleSearchTermChange(Math.random())}>
           Change Search Term
