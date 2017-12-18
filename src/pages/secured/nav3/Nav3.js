@@ -12,7 +12,7 @@ const Nav3 = () => {
         minHeight: 280
       }}
     >
-      <h1>Nav3 Header</h1>
+      <h1>Input</h1>
       <h2>h2 Header</h2>
       <h3>h3 Header</h3>
       <p>

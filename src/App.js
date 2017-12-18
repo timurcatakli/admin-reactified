@@ -1,4 +1,6 @@
-//     const { url } = this.props.match;
+// Sidebar title, and icon responsive durumuna gore degiesecek
+// Favicon
+// http://localhost:3000/dashboard/nav1
 
 import React from 'react'
 import { Provider } from 'react-redux'

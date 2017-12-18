@@ -8,6 +8,7 @@ class DashboardRoutes extends Component {
   render() {
     return (
       <Switch>
+        <Route exact path={'/dashboard/'} component={Nav3} />
         <Route exact path={'/dashboard/nav1/'} component={Nav1} />
         <Route exact path={'/dashboard/nav2/'} component={Nav2} />
         <Route exact path={'/dashboard/nav3/'} component={Nav3} />
