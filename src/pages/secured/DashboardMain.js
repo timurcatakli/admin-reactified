@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import {connect} from 'react-redux'
 import { Layout } from 'antd'
+import { Debounce } from 'react-throttle'
+import WindowResizeListener from 'react-window-size-listener'
+import { toggleSidebar2 } from 'redux/sidebar/actions'
 import DashboardSider from 'pages/secured/DashboardSider'
 import DashboardHeader from 'pages/secured/DashboardHeader'
 import DashboardRoutes from 'pages/secured/DashboardRoutes'
@@ -14,10 +17,20 @@ const propTypes = {
 
 class DashboardMain extends Component {
   render() {
-    const {isSiderCollapsed, isSiderTempOpen} = this.props
+    const { isSiderCollapsed, isSiderTempOpen } = this.props
     return (
       <Layout style={{ height: '100vh' }}>
-        <DashboardSider collapsed={isSiderCollapsed} tempOpen={isSiderTempOpen} />
+        <Debounce time="1000" handler="onResize">
+          <WindowResizeListener
+            onResize={windowSize => {
+              this.props.toggleSidebar2(windowSize)
+            }}
+          />
+        </Debounce>
+        <DashboardSider
+          collapsed={isSiderCollapsed}
+          tempOpen={isSiderTempOpen}
+        />
         <Layout>
           <DashboardHeader collapsed={isSiderCollapsed} />
           <DashboardRoutes />
@@ -39,4 +52,4 @@ const mapStateToProps = (state = {}) => {
   }
 }
 
-export default connect(mapStateToProps)(DashboardMain)
+export default connect(mapStateToProps, { toggleSidebar2 })(DashboardMain)

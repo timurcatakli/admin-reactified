@@ -1,6 +1,7 @@
 import { Map } from 'immutable'
 import {
   SIDEBAR_TOGGLE_REQUESTED,
+  SIDEBAR_TOGGLE_REQUESTED2,
   SIDEBAR_OPEN_REQUESTED,
   SIDEBAR_CLOSE_REQUESTED
 } from './actions'
@@ -15,6 +16,9 @@ export default function reducer(state = initState, action) {
   case SIDEBAR_TOGGLE_REQUESTED:
     const currentState = state.get('isSiderTempOpen')
     return state.set('isSiderTempOpen', !currentState)
+  case SIDEBAR_TOGGLE_REQUESTED2:
+    const currentState2 = state.get('isSiderTempOpen')
+    return state.set('isSiderTempOpen', !currentState2)
   case SIDEBAR_OPEN_REQUESTED:
     return state.set('isSiderCollapsed', false)
   case SIDEBAR_CLOSE_REQUESTED:
