@@ -7,7 +7,7 @@ import { Switch, Route } from 'react-router-dom'
 class DashboardRoutes extends Component {
   render() {
     return (
-      <Switch>
+      <Switch style={{ height: '100vh' }}>
         <Route exact path={'/dashboard/'} component={Nav3} />
         <Route exact path={'/dashboard/nav1/'} component={Nav1} />
         <Route exact path={'/dashboard/nav2/'} component={Nav2} />

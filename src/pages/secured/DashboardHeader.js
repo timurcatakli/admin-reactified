@@ -29,7 +29,6 @@ class DashboardHeader extends Component {
     )
   }
   handleSidebarToggle = (isCollapsed) => {
-    console.log(isCollapsed)
     if (isCollapsed) {
       this.props.openSidebar()
     } else {

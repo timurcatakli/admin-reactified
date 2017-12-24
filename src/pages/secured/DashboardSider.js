@@ -44,9 +44,6 @@ class DashboardSider extends Component {
         collapsed={isSiderCollapsed}
         onMouseEnter={this.onMouseEnter}
         onMouseLeave={this.onMouseLeave}
-        onCollapse={(isCollapsed, type) => {
-          console.log(isCollapsed, type)
-        }}
       >
         <div className="siderLogo">
           {isSiderCollapsed ? (
