@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Layout } from 'antd'
 import { fetchUsers } from 'redux/users/actions'
+import { requestRandomUser } from 'redux/sagatest/actions'
 
 const { Content } = Layout
 const propTypes = {
@@ -13,6 +14,7 @@ const propTypes = {
 class Nav1 extends Component {
   componentDidMount() {
     this.props.fetchUsers()
+    this.props.requestRandomUser()
   }
   renderUsers = users => {
     return users.map(user => {
@@ -60,4 +62,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, {fetchUsers})(Nav1)
+export default connect(mapStateToProps, {fetchUsers, requestRandomUser})(Nav1)
