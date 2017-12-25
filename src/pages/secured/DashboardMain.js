@@ -4,32 +4,30 @@ import PropTypes from 'prop-types'
 import { Layout } from 'antd'
 import { Debounce } from 'react-throttle'
 import WindowResizeListener from 'react-window-size-listener'
-import { toggleSidebar2 } from 'redux/sidebar/actions'
+import { toggleSidebar } from 'redux/sidebar/actions'
 import DashboardSider from 'pages/secured/DashboardSider'
 import DashboardHeader from 'pages/secured/DashboardHeader'
 import DashboardRoutes from 'pages/secured/DashboardRoutes'
 
 const { Footer } = Layout
 const propTypes = {
-  isSiderCollapsed: PropTypes.bool.isRequired,
-  isSiderTempOpen: PropTypes.bool.isRequired
+  isSiderCollapsed: PropTypes.bool.isRequired
 }
 
 class DashboardMain extends Component {
   render() {
-    const { isSiderCollapsed, isSiderTempOpen } = this.props
+    const { isSiderCollapsed } = this.props
     return (
       <Layout style={{ height: '100vh' }}>
         <Debounce time="1000" handler="onResize">
           <WindowResizeListener
             onResize={windowSize => {
-              this.props.toggleSidebar2(windowSize)
+              this.props.toggleSidebar(windowSize)
             }}
           />
         </Debounce>
         <DashboardSider
           collapsed={isSiderCollapsed}
-          tempOpen={isSiderTempOpen}
         />
         <Layout>
           <DashboardHeader collapsed={isSiderCollapsed} />
@@ -47,9 +45,8 @@ DashboardMain.propTypes = propTypes
 
 const mapStateToProps = (state = {}) => {
   return {
-    isSiderCollapsed: state.sidebar.get('isSiderCollapsed'),
-    isSiderTempOpen: state.sidebar.get('isSiderTempOpen')
+    isSiderCollapsed: state.sidebar.get('isSiderCollapsed')
   }
 }
 
-export default connect(mapStateToProps, { toggleSidebar2 })(DashboardMain)
+export default connect(mapStateToProps, { toggleSidebar })(DashboardMain)

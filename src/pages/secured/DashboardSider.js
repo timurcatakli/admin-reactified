@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import {
-  toggleSidebar,
   openSidebar,
   closeSidebar
 } from 'redux/sidebar/actions'
@@ -12,38 +11,18 @@ import { Layout, Menu, Icon } from 'antd'
 const { Sider } = Layout
 const propTypes = {
   collapsed: PropTypes.bool.isRequired,
-  tempOpen: PropTypes.bool.isRequired,
-  toggleSidebar: PropTypes.func.isRequired
 }
 
 class DashboardSider extends Component {
-  onMouseEnter = () => {
-    const { collapsed } = this.props
-    if (collapsed) {
-      this.props.toggleSidebar()
-    }
-    return
-  }
-
-  onMouseLeave = () => {
-    const { collapsed } = this.props
-    if (collapsed) {
-      this.props.toggleSidebar()
-    }
-    return
-  }
-
   render() {
-    const { collapsed, tempOpen } = this.props
-    const isSiderCollapsed = tempOpen ? false : collapsed
+    const { collapsed } = this.props
+    const isSiderCollapsed = collapsed
     return (
       <Sider
         breakpoint="lg"
         trigger={null}
         collapsible
         collapsed={isSiderCollapsed}
-        onMouseEnter={this.onMouseEnter}
-        onMouseLeave={this.onMouseLeave}
       >
         <div className="siderLogo">
           {isSiderCollapsed ? (
@@ -87,6 +66,6 @@ class DashboardSider extends Component {
 
 DashboardSider.propTypes = propTypes
 
-export default connect(null, { toggleSidebar, openSidebar, closeSidebar })(
+export default connect(null, { openSidebar, closeSidebar })(
   DashboardSider
 )

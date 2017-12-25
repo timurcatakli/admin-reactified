@@ -1,5 +1,4 @@
 export const SIDEBAR_TOGGLE_REQUESTED = 'SIDEBAR_TOGGLE_REQUESTED'
-export const SIDEBAR_TOGGLE_REQUESTED2 = 'SIDEBAR_TOGGLE_REQUESTED2'
 export const SIDEBAR_OPEN_REQUESTED = 'SIDEBAR_OPEN_REQUESTED'
 export const SIDEBAR_CLOSE_REQUESTED = 'SIDEBAR_CLOSE_REQUESTED'
 
@@ -13,17 +12,10 @@ export function getView(width) {
   return newView
 }
 
-export const toggleSidebar = () => {
-  return {
-    type: SIDEBAR_TOGGLE_REQUESTED,
-    payload: {}
-  }
-}
-
-export const toggleSidebar2 = (windowSize) => {
+export const toggleSidebar = (windowSize) => {
   const view = getView(windowSize.windowWidth)
   return {
-    type: SIDEBAR_TOGGLE_REQUESTED2,
+    type: SIDEBAR_TOGGLE_REQUESTED,
     payload: {view}
   }
 }
