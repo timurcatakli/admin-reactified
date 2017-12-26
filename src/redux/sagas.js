@@ -12,6 +12,13 @@ import {
   RANDOM_USER_FETCH_SUCCEEDED,
   RANDOM_USER_FETCH_FAILED
 } from 'redux/sagatest/actions/'
+
+import {
+  TWITTER_DATA_FETCH_REQUESTED,
+  TWITTER_DATA_FETCH_SUCCEEDED,
+  TWITTER_DATA_FETCH_FAILED
+} from 'redux/twitter/actions/'
+
 import { fetchData } from './api'
 
 export function* getRandomUser() {
@@ -23,6 +30,16 @@ export function* getRandomUser() {
   }
 }
 
+export function* getTwitterData() {
+  try {
+    const data = yield call(fetchData)
+    yield put({ type: TWITTER_DATA_FETCH_SUCCEEDED, data })
+  } catch (error) {
+    yield put({ type: TWITTER_DATA_FETCH_FAILED, error })
+  }
+}
+
 export default function* sagas() {
   yield takeLatest(RANDOM_USER_FETCH_REQUESTED, getRandomUser)
+  yield takeLatest(TWITTER_DATA_FETCH_REQUESTED, getTwitterData)
 }

@@ -2,28 +2,19 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Layout } from 'antd'
-import { fetchUsers } from 'redux/users/actions'
-import { requestRandomUser } from 'redux/sagatest/actions'
+import { requestTwitterData } from 'redux/twitter/actions'
 
 const { Content } = Layout
 const propTypes = {
-  users: PropTypes.array.isRequired,
-  fetchUsers: PropTypes.func.isRequired
+  requestTwitterData: PropTypes.func.isRequired
 }
 
 class Nav1 extends Component {
   componentDidMount() {
-    this.props.fetchUsers()
-    this.props.requestRandomUser()
-  }
-  renderUsers = users => {
-    return users.map(user => {
-      return <h1 key={user.id}>{user.email}</h1>
-    })
+    this.props.requestTwitterData()
   }
 
   render() {
-    const { users } = this.props
     return (
       <Content
         style={{
@@ -33,7 +24,6 @@ class Nav1 extends Component {
           minHeight: 280
         }}
       >
-        {this.renderUsers(users)}
         <p>
           Export consequat ita graviterque iis aliqua ut doctrina eu sint. Nulla
           occaecat eu laboris, admodum si magna. Ne sed comprehenderit ubi
@@ -56,10 +46,10 @@ class Nav1 extends Component {
 Nav1.propTypes = propTypes
 
 const mapStateToProps = state => {
-  const { users } = state
+  const { twitterData } = state
   return {
-    users
+    twitterData
   }
 }
 
-export default connect(mapStateToProps, {fetchUsers, requestRandomUser})(Nav1)
+export default connect(mapStateToProps, {requestTwitterData})(Nav1)
