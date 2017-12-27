@@ -7,11 +7,6 @@
 // Finally, once all the operations are finished, we use the put Effect to dispatch and action to the store and send all the arguments using the information loaded during the whole saga.
 
 import { call, put, takeLatest } from 'redux-saga/effects'
-import {
-  RANDOM_USER_FETCH_REQUESTED,
-  RANDOM_USER_FETCH_SUCCEEDED,
-  RANDOM_USER_FETCH_FAILED
-} from 'redux/sagatest/actions/'
 
 import {
   TWITTER_DATA_FETCH_REQUESTED,
@@ -20,15 +15,6 @@ import {
 } from 'redux/twitter/actions/'
 
 import { fetchData } from './api'
-
-export function* getRandomUser() {
-  try {
-    const data = yield call(fetchData)
-    yield put({ type: RANDOM_USER_FETCH_SUCCEEDED, data })
-  } catch (error) {
-    yield put({ type: RANDOM_USER_FETCH_FAILED, error })
-  }
-}
 
 export function* getTwitterData() {
   try {
@@ -40,6 +26,5 @@ export function* getTwitterData() {
 }
 
 export default function* sagas() {
-  yield takeLatest(RANDOM_USER_FETCH_REQUESTED, getRandomUser)
   yield takeLatest(TWITTER_DATA_FETCH_REQUESTED, getTwitterData)
 }

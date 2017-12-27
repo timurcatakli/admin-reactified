@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Layout } from 'antd'
-import { database } from 'helpers/firebase'
 const { Content } = Layout
 
 class Nav2 extends Component {
@@ -11,9 +10,6 @@ class Nav2 extends Component {
     }
   }
 
-  componentDidMount() {
-    database.ref('/EBRU').push('c')
-  }
   render() {
     return (
       <Content
