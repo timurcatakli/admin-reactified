@@ -2,16 +2,16 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Layout } from 'antd'
-import { requestTwitterData } from 'redux/twitter/actions'
+import { getInvite } from 'redux/twitter/actions'
 
 const { Content } = Layout
 const propTypes = {
-  requestTwitterData: PropTypes.func.isRequired
+  getInvite: PropTypes.func.isRequired
 }
 
 class Nav1 extends Component {
   componentDidMount() {
-    this.props.requestTwitterData()
+    this.props.getInvite('fletcher-jones')
   }
 
   render() {
@@ -52,4 +52,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, {requestTwitterData})(Nav1)
+export default connect(mapStateToProps, {getInvite})(Nav1)
