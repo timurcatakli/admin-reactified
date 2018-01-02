@@ -16,6 +16,8 @@ class Home extends Component {
         <Link to={'/aboutus'}>AboutUs</Link>
         -
         <Link to={'/dashboard'}>dashboard</Link>
+        -
+        <Link to={'/signup'}>signup</Link>
       </p>
     )
   }

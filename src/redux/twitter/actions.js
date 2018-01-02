@@ -1,4 +1,4 @@
-import database from 'helpers/firebase'
+import { database } from 'helpers/firebase'
 
 const actionTypes = {
   GetInviteRequested: 'GET_INVITE_REQUESTED',
@@ -11,7 +11,6 @@ const actionTypes = {
 
   GuestAdded: 'GUEST_ADDED'
 }
-
 
 function getInviteRequestedAction() {
   return {
