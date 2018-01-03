@@ -14,7 +14,7 @@ const propTypes = {
   isSiderCollapsed: PropTypes.bool.isRequired
 }
 
-class DashboardMain extends Component {
+class DashboardLayout extends Component {
   render() {
     const { isSiderCollapsed } = this.props
     return (
@@ -41,7 +41,7 @@ class DashboardMain extends Component {
   }
 }
 
-DashboardMain.propTypes = propTypes
+DashboardLayout.propTypes = propTypes
 
 const mapStateToProps = (state = {}) => {
   return {
@@ -49,4 +49,4 @@ const mapStateToProps = (state = {}) => {
   }
 }
 
-export default connect(mapStateToProps, { toggleSidebar })(DashboardMain)
+export default connect(mapStateToProps, { toggleSidebar })(DashboardLayout)
